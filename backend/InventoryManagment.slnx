@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="InventoryManagement.Api/InventoryManagement.Api.csproj" />
+  <Project Path="InventoryManagement.Core/InventoryManagement.Core.csproj" />
+  <Project Path="InventoryManagement.Infrastructure/InventoryManagement.Infrastructure.csproj" />
+  <Project Path="InventoryManagement.Tests/InventoryManagement.Tests.csproj" />
+</Solution>
