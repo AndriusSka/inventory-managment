@@ -21,6 +21,7 @@ builder.Services.AddScoped<IInventoryItemRepository, InventoryItemRepository>();
 // Service 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IInventoryItemService, InventoryItemService>();
+builder.Services.AddScoped<IPdfExportService, PdfExportService>();  
 
 // Web API
 builder.Services.AddControllers();
