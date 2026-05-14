@@ -1,8 +1,8 @@
 # Inventory managment
 
-## Projekto paleidimas
+## Projekto inicializacija
 
-1. Paleisti backend'a:
+1. Paleisti backend:
 
 ```bash
    cd backend/InventoryManagement.Api
@@ -10,10 +10,10 @@
 ```
 
 ```
-    Backend'as veiks ant http://localhost:5000
+Backend veiks ant http://localhost:5000
 ```
 
-2. Paleisti frontend'a:
+2. Paleisti frontend:
 
 ```bash
    cd frontend
@@ -22,12 +22,12 @@
 ```
 
 ```
-    Frontend'as veikia ant http://localhost:5173
+Frontend veiks ant http://localhost:5173
 ```
 
-3. Atidarykite narsykleje frontendo ip
+3. Atidaryti naršyklėje frontend'o adresą
 
-## Testu paleidimas
+## Testų paleidimas
 
 ```bash
 cd backend
@@ -38,7 +38,7 @@ dotnet test
 
 Backend:
 
-- Entity Framework Core (In-Memory) - duomenu baze
+- EF Core (In-Memory) - duomenų bazė
 - QuestPDF - PDF generavimas
 - xUnit ir FluentAssertions - unit testai
 - Swagger - API dokumentacija, be frontend pasitestuoti backend
@@ -54,16 +54,16 @@ Frontend:
 
 ## Funkcionalumas
 
-- Vartotoju sarasas
-- Inventoriaus irasu sarasas
-- Filtravimas pagal tipa, komentara ir vartotoja
+- Vartotojų sąrašas
+- Inventoriaus įrašų sąrašas
+- Filtravimas pagal tipą, komentarą ir vartotoją
 - Soft delete
-- PDF eksportas su dviem skirtingais sablonais:
-  - Lentele - visi irasai suvestineje
-  - Sugrupuota pagal vartotoja - irasai grupuojami i vartotoju blokus
-- Eksportas atspindi aktyvius filtrus ir neitraukia istrintu irasu
+- PDF eksportas su dviem skirtingais šablonais:
+  - Lentelė - visi įrašai suvestinėje
+  - Sugrupuota pagal vartotoją - įrašai grupuojami į vartotojų blokus
+- Eksportas atspindi aktyvius filtrus ir neįtraukia ištrintų įrašų
 
-## Projekto struktura
+## Projekto struktūra
 
 ```
 backend/
