@@ -8,6 +8,7 @@ import type {
 import type { User } from "../types/User";
 import { InventoryFilters } from "../components/InventoryFilters";
 import { InventoryTable } from "../components/InventoryTable";
+import { ExportButton } from "../components/ExportButton";
 
 export function InventoryItemsPage() {
   const [items, setItems] = useState<InventoryItem[]>([]);
@@ -60,7 +61,10 @@ export function InventoryItemsPage() {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold text-slate-800 mb-4">Inventorius</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold text-slate-800">Inventorius</h2>
+        <ExportButton filter={filter} disabled={isLoading} />
+      </div>
 
       <InventoryFilters filter={filter} users={users} onChange={setFilter} />
 
