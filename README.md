@@ -9,9 +9,9 @@
    dotnet run
 ```
 
-    Backend'as veikia ant http://localhost:5000
+Backend'as veikia ant http://localhost:5000
 
-2. Paleiskite frontend'a:
+2. Paleisti frontend'a:
 
 ```bash
    cd frontend
@@ -19,7 +19,7 @@
    npm run dev
 ```
 
-    Frontend'as veikia ant http://localhost:5173
+Frontend'as veikia ant http://localhost:5173
 
 3. Atidarykite narsykleje frontendo ip'a http://localhost:5173
 
@@ -61,6 +61,7 @@ Frontend:
 
 ## Projekto struktura
 
+```
 backend/
 InventoryManagement.Api | HTTP sluoksnis (controller'iai, Program.cs)
 InventoryManagement.Core | Modeliai, DTO, enums, interface'ai, mapper'iai
@@ -73,3 +74,4 @@ components | UI komponentai
 pages | Puslapiai
 types | TypeScript tipai
 utils | Pagalbines funkcijos
+```
