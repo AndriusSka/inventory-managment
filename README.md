@@ -9,7 +9,9 @@
    dotnet run
 ```
 
-Backend'as veikia ant http://localhost:5000
+```
+    Backend'as veiks ant http://localhost:5000
+```
 
 2. Paleisti frontend'a:
 
@@ -19,9 +21,11 @@ Backend'as veikia ant http://localhost:5000
    npm run dev
 ```
 
-Frontend'as veikia ant http://localhost:5173
+```
+    Frontend'as veikia ant http://localhost:5173
+```
 
-3. Atidarykite narsykleje frontendo ip'a http://localhost:5173
+3. Atidarykite narsykleje frontendo ip
 
 ## Testu paleidimas
 
