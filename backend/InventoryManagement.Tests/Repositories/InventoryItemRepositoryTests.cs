@@ -45,7 +45,6 @@ public class InventoryItemRepositoryTests
         using var context = TestDbContextFactory.Create();
         var (jonas, _) = TestDbContextFactory.SeedUsers(context);
         TestDbContextFactory.SeedItems(context, jonas);
-
         var repository = new InventoryItemRepository(context);
 
         var result = await repository.GetAllAsync(
@@ -53,6 +52,20 @@ public class InventoryItemRepositoryTests
 
         result.Should().ContainSingle();
         result.First().Comment.Should().Contain("iPhone");
+    }
+
+    [Fact]
+    public async Task GetAllAsync_FilterByComment_IsCaseInsensitive()
+    {
+        using var context = TestDbContextFactory.Create();
+        var (jonas, _) = TestDbContextFactory.SeedUsers(context);
+        TestDbContextFactory.SeedItems(context, jonas);
+        var repository = new InventoryItemRepository(context);
+
+        var result = await repository.GetAllAsync(
+            type: null, comment: "iphone", userId: null);
+
+        result.Should().ContainSingle();
     }
 
     [Fact]

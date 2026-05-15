@@ -30,7 +30,8 @@ public class InventoryItemRepository : IInventoryItemRepository
 
         if (!string.IsNullOrWhiteSpace(comment))
         {
-            query = query.Where(i => i.Comment.Contains(comment));
+            var commentLower = comment.ToLower();
+            query = query.Where(i => i.Comment.ToLower().Contains(commentLower));
         }
 
         if (userId.HasValue)
