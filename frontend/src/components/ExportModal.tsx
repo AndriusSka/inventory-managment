@@ -8,11 +8,13 @@ interface ExportModalProps {
   isExporting: boolean;
 }
 
-const templateOptions: {
+interface TemplateOption {
   value: PdfTemplateType;
   label: string;
   description: string;
-}[] = [
+}
+
+const templateOptions: TemplateOption[] = [
   {
     value: "Table",
     label: "Lentelė",
@@ -20,7 +22,7 @@ const templateOptions: {
   },
   {
     value: "GroupedByUser",
-    label: "Sugrupuota pagal vartotojus",
+    label: "Sugrupuota pagal vartotoją",
     description: "Įrašai sugrupuoti į blokus pagal kiekvieną vartotoją",
   },
 ];
