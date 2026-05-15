@@ -36,6 +36,9 @@ export function InventoryTable({ items, onDelete }: InventoryTableProps) {
               Tipas
             </th>
             <th className="px-4 py-3 text-left text-sm font-medium text-slate-700">
+              ID
+            </th>
+            <th className="px-4 py-3 text-left text-sm font-medium text-slate-700">
               Komentaras
             </th>
             <th className="px-4 py-3 text-left text-sm font-medium text-slate-700">
@@ -54,6 +57,9 @@ export function InventoryTable({ items, onDelete }: InventoryTableProps) {
             <tr key={item.id} className="border-t hover:bg-slate-50">
               <td className="px-4 py-3 text-sm text-slate-800">
                 {formatItemType(item.type)}
+              </td>
+              <td className="px-4 py-3 text-xs text-slate-500 font-mono">
+                {item.id}
               </td>
               <td className="px-4 py-3 text-sm text-slate-800">
                 {item.comment}
