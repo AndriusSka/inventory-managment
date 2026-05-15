@@ -9,25 +9,27 @@ namespace InventoryManagement.Tests.Mappers;
 public class InventoryMappersTests
 {
     [Fact]
-    public void UserToDto_MapsAllFields()
+    public void MapUserToDto_MapsAllFields()
     {
-        // Paruošiami duomenys
+        // Paruošimas
         var user = new User
         {
             Id = Guid.NewGuid(),
-            FirstName = "Aa",
-            LastName = "Bb"
+            FirstName = "Jonas",
+            LastName = "Petraitis"
         };
-        // Vykdomas veiksmas
-        var dto = user.ToDto();
-        // Patikrinami rezultatai
+
+        // Vykdymas
+        var dto = InventoryMappers.MapUserToDto(user);
+
+        // Tikrinimas
         dto.Id.Should().Be(user.Id);
-        dto.FirstName.Should().Be("Aa");
-        dto.LastName.Should().Be("Bb");
+        dto.FirstName.Should().Be("Jonas");
+        dto.LastName.Should().Be("Petraitis");
     }
 
     [Fact]
-    public void InventoryItemToDto_ConvertsEnumToString()
+    public void MapItemToDto_ConvertsEnumToString()
     {
         var item = new InventoryItem
         {
@@ -36,32 +38,32 @@ public class InventoryMappersTests
             Comment = "Test",
             PurchaseDate = DateTime.Now,
             UserId = Guid.NewGuid(),
-            User = new User { FirstName = "Aa", LastName = "Bb" }
+            User = new User { FirstName = "Jonas", LastName = "Petraitis" }
         };
 
-        var dto = item.ToDto();
+        var dto = InventoryMappers.MapItemToDto(item);
 
         dto.Type.Should().Be("Phone");
     }
 
     [Fact]
-    public void InventoryItemToDto_CombinesUserFullName()
+    public void MapItemToDto_CombinesUserFullName()
     {
         var item = new InventoryItem
         {
             Id = Guid.NewGuid(),
             Type = ItemType.Tablet,
             Comment = "Test",
-            User = new User { FirstName = "Aa", LastName = "Bb" }
+            User = new User { FirstName = "Jonas", LastName = "Petraitis" }
         };
 
-        var dto = item.ToDto();
+        var dto = InventoryMappers.MapItemToDto(item);
 
-        dto.UserFullName.Should().Be("Aa Bb");
+        dto.UserFullName.Should().Be("Jonas Petraitis");
     }
 
     [Fact]
-    public void InventoryItemToDto_HandlesNullUser_ReturnsEmptyFullName()
+    public void MapItemToDto_HandlesNullUser_ReturnsEmptyFullName()
     {
         var item = new InventoryItem
         {
@@ -71,7 +73,7 @@ public class InventoryMappersTests
             User = null!
         };
 
-        var dto = item.ToDto();
+        var dto = InventoryMappers.MapItemToDto(item);
 
         dto.UserFullName.Should().BeEmpty();
     }

@@ -14,19 +14,26 @@ public class PdfExportService : IPdfExportService
         _itemService = itemService;
     }
 
+    // Gaunamas filtras ir sablonas, pagal kuriuos generuojamas PDF failas
     public async Task<byte[]> ExportAsync(InventoryItemFilterDto filter, PdfTemplateType templateType)
     {
-        // Gaunami duomenys
         var items = await _itemService.GetFilteredAsync(filter);
-
-        // Pasirenkamas šablonas
-        IPdfTemplate template = templateType switch
-        {
-            PdfTemplateType.Table => new TableTemplate(),
-            PdfTemplateType.GroupedByUser => new GroupedByUserTemplate(),
-            _ => throw new ArgumentException($"Nepalaikomas šablonas: {templateType}")
-        };
-
+        var template = GetTemplate(templateType);
         return template.Generate(items);
+    }
+
+    private IPdfTemplate GetTemplate(PdfTemplateType templateType)
+    {
+        if (templateType == PdfTemplateType.Table)
+        {
+            return new TableTemplate();
+        }
+
+        if (templateType == PdfTemplateType.GroupedByUser)
+        {
+            return new GroupedByUserTemplate();
+        }
+
+        throw new ArgumentException("Nepalaikomas sablonas: " + templateType);
     }
 }

@@ -5,7 +5,7 @@ namespace InventoryManagement.Core.Mappers;
 
 public static class InventoryMappers
 {
-    public static UserDto ToDto(this User user)
+    public static UserDto MapUserToDto(User user)
     {
         return new UserDto
         {
@@ -15,19 +15,25 @@ public static class InventoryMappers
         };
     }
 
-    public static InventoryItemDto ToDto(this InventoryItem item)
+    public static InventoryItemDto MapItemToDto(InventoryItem item)
     {
-        return new InventoryItemDto
+        var dto = new InventoryItemDto();
+        dto.Id = item.Id;
+        dto.Type = item.Type.ToString();
+        dto.Comment = item.Comment;
+        dto.PurchaseDate = item.PurchaseDate;
+        dto.UserId = item.UserId;
+        dto.UserFullName = GetUserFullName(item.User);
+        return dto;
+    }
+
+    private static string GetUserFullName(User user)
+    {
+        if (user == null)
         {
-        Id = item.Id,
-        // Konvertuojama enum reikšmė į string
-        Type = item.Type.ToString(),
-        Comment = item.Comment,
-        PurchaseDate = item.PurchaseDate,
-        UserId = item.UserId,
-        UserFullName = item.User != null
-            ? $"{item.User.FirstName} {item.User.LastName}"
-            : string.Empty
-        };
+            return string.Empty;
+        }
+
+        return user.FirstName + " " + user.LastName;
     }
 }

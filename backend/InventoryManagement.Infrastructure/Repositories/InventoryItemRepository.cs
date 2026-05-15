@@ -16,21 +16,27 @@ public class InventoryItemRepository : IInventoryItemRepository
     }
 
     public async Task<IEnumerable<InventoryItem>> GetAllAsync(
-        ItemType? type, string? comment, Guid? userId)
+    ItemType? type, string? comment, Guid? userId)
     {
-        var query = _context.InventoryItems
-            .Include(i => i.User)
-            .AsQueryable();
+        // Pradine uzklausa 
+        IQueryable<InventoryItem> query = _context.InventoryItems
+            .Include(i => i.User);
 
-        // Filtravimas tik jei jų nurodyta
+        // Pridedam filtrus
         if (type.HasValue)
+        {
             query = query.Where(i => i.Type == type.Value);
+        }
 
         if (!string.IsNullOrWhiteSpace(comment))
+        {
             query = query.Where(i => i.Comment.Contains(comment));
+        }
 
         if (userId.HasValue)
+        {
             query = query.Where(i => i.UserId == userId.Value);
+        }
 
         return await query.ToListAsync();
     }

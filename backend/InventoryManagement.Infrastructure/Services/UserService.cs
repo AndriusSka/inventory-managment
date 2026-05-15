@@ -15,7 +15,14 @@ public class UserService : IUserService
 
     public async Task<IEnumerable<UserDto>> GetAllAsync()
     {
-        var users = await _repository.GetAllAsync();
-        return users.Select(u => u.ToDto());
+    var users = await _repository.GetAllAsync();
+    var dtos = new List<UserDto>();
+
+    foreach (var user in users)
+    {
+        dtos.Add(InventoryMappers.MapUserToDto(user));
+    }
+
+    return dtos;
     }
 }

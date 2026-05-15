@@ -16,24 +16,39 @@ export function InventoryFilters({
   onChange,
 }: InventoryFiltersProps) {
   const handleTypeChange = (value: string) => {
-    onChange({
-      ...filter,
-      type: value === "" ? undefined : (value as ItemType),
-    });
+    const newFilter = { ...filter };
+
+    if (value === "") {
+      newFilter.type = undefined;
+    } else {
+      newFilter.type = value as ItemType;
+    }
+
+    onChange(newFilter);
   };
 
   const handleCommentChange = (value: string) => {
-    onChange({
-      ...filter,
-      comment: value === "" ? undefined : value,
-    });
+    const newFilter = { ...filter };
+
+    if (value === "") {
+      newFilter.comment = undefined;
+    } else {
+      newFilter.comment = value;
+    }
+
+    onChange(newFilter);
   };
 
   const handleUserChange = (value: string) => {
-    onChange({
-      ...filter,
-      userId: value === "" ? undefined : value,
-    });
+    const newFilter = { ...filter };
+
+    if (value === "") {
+      newFilter.userId = undefined;
+    } else {
+      newFilter.userId = value;
+    }
+
+    onChange(newFilter);
   };
 
   const handleClear = () => {

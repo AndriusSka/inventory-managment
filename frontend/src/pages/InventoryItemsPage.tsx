@@ -51,10 +51,12 @@ export function InventoryItemsPage() {
   const handleDelete = async (id: string) => {
     try {
       await inventoryItemsApi.softDelete(id);
-      // Po softdelete atnaujiname sąraša lokaliai, kad nereikėtų vėl kviesti API
-      setItems((current) => current.filter((item) => item.id !== id));
+
+      // Atnaujiname sąrašą pašalindami ištrintą įrašą lokaliai
+      const newItems = items.filter((item) => item.id !== id);
+      setItems(newItems);
     } catch (err) {
-      setError("Nepavyko ištrinti įrašo.");
+      setError("Nepavyko istrinti iraso.");
       console.error(err);
     }
   };
